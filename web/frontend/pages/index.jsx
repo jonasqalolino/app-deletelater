@@ -15,8 +15,13 @@ import { trophyImage } from "../assets";
 
 import { ProductsCard } from "../components";
 
+import {
+  useLocation
+} from "react-router-dom";
+
 export default function HomePage() {
   const { t } = useTranslation();
+  const location = useLocation()
   return (
     <Page narrowWidth>
       <TitleBar title={t("HomePage.title")} primaryAction={null} />
@@ -85,6 +90,8 @@ export default function HomePage() {
           </Card>
         </Layout.Section>
         <Layout.Section>
+        { JSON.stringify(location)}
+
           <ProductsCard />
         </Layout.Section>
       </Layout>
