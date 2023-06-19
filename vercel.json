@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "name": "app-deletelater",
+  "builds": [
+     { "src": "/web/index.js", "use": "@vercel/node" }
+  ],
+  "routes": [
+     { "src": "/web/(.*)", "dest": "/index.js" }
+  ]
+}
