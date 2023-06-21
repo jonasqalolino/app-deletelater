@@ -21,21 +21,21 @@ const STATIC_PATH =
 const app = express();
 
 // Set up Shopify authentication and webhook handling
-// app.get(shopify.config.auth.path, shopify.auth.begin());
-// app.get(
-//   shopify.config.auth.callbackPath,
-//   shopify.auth.callback(),
-//   shopify.redirectToShopifyOrAppRoot()
-// );
-// app.post(
-//   shopify.config.webhooks.path,
-//   shopify.processWebhooks({ webhookHandlers: GDPRWebhookHandlers })
-// );
+app.get(shopify.config.auth.path, shopify.auth.begin());
+app.get(
+  shopify.config.auth.callbackPath,
+  shopify.auth.callback(),
+  shopify.redirectToShopifyOrAppRoot()
+);
+app.post(
+  shopify.config.webhooks.path,
+  shopify.processWebhooks({ webhookHandlers: GDPRWebhookHandlers })
+);
 
 // If you are adding routes outside of the /api path, remember to
 // also add a proxy rule for them in web/frontend/vite.config.js
 
-// app.use("/api/*", shopify.validateAuthenticatedSession());
+app.use("/api/*", shopify.validateAuthenticatedSession());
 
 app.use(express.json());
 
@@ -64,7 +64,7 @@ app.get("/api/products/create", async (_req, res) => {
 // app.use(shopify.cspHeaders());
 // app.use(serveStatic(STATIC_PATH, { index: false }));
 
-// app.use("/*", async (_req, res, _next) => {
+// app.use("/*", shopify.ensureInstalledOnShop(), async (_req, res, _next) => {
 //   return res
 //     .status(200)
 //     .set("Content-Type", "text/html")
