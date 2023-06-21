@@ -45,10 +45,7 @@ app.get("/api/products/count", async (_req, res) => {
   });
   res.status(200).send(countData);
 });
-app.get("/api/test", async (_req, res) => {
-  console.log('teeest')
-  res.status(200).send({test: true});
-});
+
 
 app.get("/api/products/create", async (_req, res) => {
   let status = 200;
@@ -72,6 +69,12 @@ app.use("/*", shopify.ensureInstalledOnShop(), async (_req, res, _next) => {
     .status(200)
     .set("Content-Type", "text/html")
     .send(readFileSync(join(STATIC_PATH, "index.html")));
+});
+
+
+app.get("/test", async (_req, res) => {
+  console.log('teeest')
+  res.status(200).send({test: true});
 });
 
 app.listen(PORT);
