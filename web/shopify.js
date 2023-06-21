@@ -12,7 +12,7 @@ const billingConfig = {
     // This is an example configuration that would do a one-time charge for $5 (only USD is currently supported)
     amount: 5.0,
     currencyCode: "USD",
-    interval: BillingInterval.OneTime,
+    interval: BillingInterval.Every30Days,
   },
 };
 
