@@ -21,16 +21,16 @@ const STATIC_PATH =
 const app = express();
 
 // Set up Shopify authentication and webhook handling
-app.get(shopify.config.auth.path, shopify.auth.begin());
-app.get(
-  shopify.config.auth.callbackPath,
-  shopify.auth.callback(),
-  shopify.redirectToShopifyOrAppRoot()
-);
-app.post(
-  shopify.config.webhooks.path,
-  shopify.processWebhooks({ webhookHandlers: GDPRWebhookHandlers })
-);
+// app.get(shopify.config.auth.path, shopify.auth.begin());
+// app.get(
+//   shopify.config.auth.callbackPath,
+//   shopify.auth.callback(),
+//   shopify.redirectToShopifyOrAppRoot()
+// );
+// app.post(
+//   shopify.config.webhooks.path,
+//   shopify.processWebhooks({ webhookHandlers: GDPRWebhookHandlers })
+// );
 
 // If you are adding routes outside of the /api path, remember to
 // also add a proxy rule for them in web/frontend/vite.config.js
