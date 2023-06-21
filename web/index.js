@@ -61,15 +61,15 @@ app.get("/api/products/create", async (_req, res) => {
   res.status(status).send({ success: status === 200, error });
 });
 
-// app.use(shopify.cspHeaders());
-// app.use(serveStatic(STATIC_PATH, { index: false }));
+app.use(shopify.cspHeaders());
+app.use(serveStatic(STATIC_PATH, { index: false }));
 
-// app.use("/*", shopify.ensureInstalledOnShop(), async (_req, res, _next) => {
-//   return res
-//     .status(200)
-//     .set("Content-Type", "text/html")
-//     .send(readFileSync(join(STATIC_PATH, "index.html")));
-// });
+app.use("/", shopify.ensureInstalledOnShop(), async (_req, res, _next) => {
+  return res
+    .status(200)
+    .set("Content-Type", "text/html")
+    .send(readFileSync(join(STATIC_PATH, "index.html")));
+});
 
 
 app.get("/test", async (_req, res) => {
