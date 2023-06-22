@@ -17,6 +17,7 @@ const billingConfig = {
 };
 
 const shopify = shopifyApp({
+  scopes: ["write_products","read_customers","write_customers"],
   api: {
     apiVersion: LATEST_API_VERSION,
     restResources,
