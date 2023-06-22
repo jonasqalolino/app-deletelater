@@ -54,6 +54,8 @@ app.get("/api/customers/count", async (_req, res) => {
     res.status(200).send(countData);
   } catch (error) {
     console.log('customer count erroooooooor',error)
+    res.status(500).send(error);
+
   }
 });
 
