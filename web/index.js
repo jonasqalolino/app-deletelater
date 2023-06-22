@@ -46,10 +46,15 @@ app.get("/api/products/count", async (_req, res) => {
   res.status(200).send(countData);
 });
 app.get("/api/customers/count", async (_req, res) => {
-  const countData = await shopify.api.rest.Customer.count({
-    session: res.locals.shopify.session,
-  });
-  res.status(200).send(countData);
+  try {
+    const countData = await shopify.api.rest.Customer.count({
+      session: res.locals.shopify.session,
+    });
+    console.log({countData})
+    res.status(200).send(countData);
+  } catch (error) {
+    console.log('customer count erroooooooor',error)
+  }
 });
 
 
