@@ -23,6 +23,9 @@ export function ProductsCard() {
       onSuccess: () => {
         setIsLoading(false);
       },
+      onError: (e) => {
+        console.log('errooooooorr', e)
+      },
     },
   });
 
