@@ -90,7 +90,7 @@ export default function HomePage() {
           </Card>
         </Layout.Section>
         <Layout.Section>
-        { JSON.stringify(location)}
+        {/* { JSON.stringify(location)} */}
 
           <ProductsCard />
         </Layout.Section>

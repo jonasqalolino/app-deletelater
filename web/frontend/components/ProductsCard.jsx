@@ -3,8 +3,13 @@ import { Card, TextContainer, Text } from "@shopify/polaris";
 import { Toast } from "@shopify/app-bridge-react";
 import { useTranslation } from "react-i18next";
 import { useAppQuery, useAuthenticatedFetch } from "../hooks";
+import { Redirect } from "@shopify/app-bridge/actions";
+import { useAppBridge } from "@shopify/app-bridge-react";
+
 
 export function ProductsCard() {
+  const app = useAppBridge();
+
   const emptyToastProps = { content: null };
   const [isLoading, setIsLoading] = useState(true);
   const [toastProps, setToastProps] = useState(emptyToastProps);
@@ -24,7 +29,18 @@ export function ProductsCard() {
         setIsLoading(false);
       },
       onError: (e) => {
+
+        console.log('asdasd',Redirect.Action.REMOTE)
+
         console.log('errooooooorr', e)
+        // https://{shop}.myshopify.com/admin/oauth/authorize?client_id={api_key}&scope={scopes}&redirect_uri={redirect_uri}&state={nonce}&grant_options[]={access_mode}
+
+        const redirect = Redirect.create(app);
+        console.log(Redirect.Action.REMOTE)
+        // redirect.dispatch(
+        //   Redirect.Action.REMOTE,
+        //   decodeURIComponent(redirectUri)
+        // );
       },
     },
   });
